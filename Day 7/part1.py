@@ -1,7 +1,7 @@
 import math
 import statistics
 
-with open("crab_locations", "r") as f:
+with open("crab_locations.txt", "r") as f:
     data = f.readline().split(",")
 
 data = [int(val) for val in data]

@@ -1,4 +1,4 @@
-with open("vent_data", "r") as f:
+with open("vent_data.txt", "r") as f:
     vent_data = []
     for line in f:
         data = line.strip().split(" -> ")

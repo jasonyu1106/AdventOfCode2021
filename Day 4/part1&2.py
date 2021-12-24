@@ -51,7 +51,7 @@ def find_last_winning_board(numbers: [], boards: []):
     print("Last Winning Number: ", winning_num, "\tFinal Score: ", winning_sum * winning_num)
 
 
-with open("bingo_data", "r") as f:
+with open("bingo_data.txt", "r") as f:
     numbers = f.readline().strip().split(",")
     numbers = [int(num) for num in numbers]
 

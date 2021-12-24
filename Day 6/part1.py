@@ -1,4 +1,4 @@
-with open("fish_initial_state", "r") as f:
+with open("fish_initial_state.txt", "r") as f:
     initial_state = f.readline().split(",")
 
 fish_states = [int(state) for state in initial_state]

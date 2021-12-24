@@ -1,6 +1,6 @@
 horizontal = 0
 depth = 0
-with open("navigation_data", "r") as f:
+with open("navigation_data.txt", "r") as f:
     for line in f:
         data = line.split()
         if data[0] == "forward":

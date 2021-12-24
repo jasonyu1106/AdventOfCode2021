@@ -1,5 +1,5 @@
 incCount = 0;
-with open("sonardata", "r") as f:
+with open("sonardata.txt", "r") as f:
     prevDepth = int(f.readline().strip())
     for line in f:
         newDepth = int(line.strip())

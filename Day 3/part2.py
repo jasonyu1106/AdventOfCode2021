@@ -35,7 +35,7 @@ def calculate_co2(filtered_input, bit_index):
 
 
 data = []
-with open("diagnostic_binary", "r") as f:
+with open("diagnostic_binary.txt", "r") as f:
     for line in f:
         data.append(line.strip())
 

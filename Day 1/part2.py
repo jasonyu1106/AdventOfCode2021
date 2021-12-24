@@ -2,7 +2,7 @@ incCount = 0
 windowSize = 3
 window = []
 
-with open("sonardata", "r") as f:
+with open("sonardata.txt", "r") as f:
     for i in range(windowSize):
         window.append(int(f.readline().strip()))
     for line in f:

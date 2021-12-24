@@ -1,7 +1,7 @@
 binarySize = 12
 binaryCounter = [0] * binarySize
 
-with open("diagnostic_binary", "r") as f:
+with open("diagnostic_binary.txt", "r") as f:
     for line in f:
         for index, bit in enumerate(line.strip()):
             if bit == "0":
