@@ -1,20 +1,3 @@
-# with open("origami_data.txt", "r") as f:
-#     # Parse coordinates
-#     coord_list = []
-#     max_x, max_y = 0, 0
-#     for line in f:
-#         if line == '\n':
-#             break
-#         coord = line.strip().split(',')
-#         x, y = int(coord[0]), int(coord[1])
-#         max_x = max(max_x, x)
-#         max_y = max(max_y, y)
-#         coord_list.append((x, y))
-#
-#     grid = [[0 for _ in range(max_x)] for _ in range(max_y)]
-#     # Parse instructions
-#     for line in f:
-#         print(line)
 import re
 from collections import defaultdict
 
@@ -37,10 +20,24 @@ with open("origami_data.txt", "r") as f:
         fold_line = int(result.group(2))
 
         # Create hash map <int, list<int>> of coordinates with x or y coordinate keys matching fold axis
-        grid_map = defaultdict(list)
-        for x, y in points:
-            if is_fold_x:
-                grid_map[x].append(y)
-            else:
-                grid_map[y].append(x)
+        grid_map = defaultdict(set)
+        if is_fold_x:
+            for x, y in points:
+                grid_map[x].add(y)
+        else:
+            for x, y in points:
+                grid_map[y].add(x)
 
+        # Subtract dots that overlap after first fold
+        visited = {fold_line}
+        dot_count = len(points) - len(grid_map[fold_line])
+        for index, coord_set in grid_map.items():
+            if index in visited:
+                continue
+            compare_index = (fold_line - (index - fold_line))
+            if compare_index in grid_map:
+                overlap_set = coord_set.intersection(grid_map[compare_index])
+                dot_count -= len(overlap_set)
+                visited.add(compare_index)
+
+        print(dot_count)
